@@ -1,13 +1,15 @@
 -- lua/plugins/core.lua
 vim.pack.add({
   { src = "https://github.com/neovim/nvim-lspconfig" },
-  { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "master" },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
   { src = "https://github.com/ibhagwan/fzf-lua", version = "main" },
   { src = "https://github.com/nvim-mini/mini.surround", version = "main" },
   { src = "https://github.com/windwp/nvim-autopairs.git"},
   { src = "https://github.com/Vigemus/iron.nvim" },
   { src = "https://github.com/nvim-mini/mini.clue" },
 })
+
+local ts_parsers = require('plugins.treesitter_parsers')
 
 local function load(pkg)
   pcall(require, "plugins." .. pkg)
@@ -21,9 +23,6 @@ load("autopairs")
 load("iron")
 load("miniclue")
 
-local ts_parsers = { 'c', 'cpp', 'python' }
-
 return {
   ts_parsers = ts_parsers,
 }
-
